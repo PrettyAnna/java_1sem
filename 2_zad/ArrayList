@@ -80,7 +80,7 @@ public class my_ArrayList implements CustomList {
         }
         int k = 0; // счетчик, который будет считать, какой элемент в другом списке мы уже нашли
         for (int i = 0; i < real_size_array; i++) {
-            if (this.get(i) == anotherCustomList.get(k)) {
+            if (this.get(i).equals(anotherCustomList.get(k))) {
                 k++;
                 if (k == anotherCustomList.size()) {  // если обошли весь второй список, то он является подсписком
                     return true;
