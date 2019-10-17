@@ -1,0 +1,102 @@
+package ru.mipt.collections;
+
+import ru.mipt.collections.CustomList;
+
+public class my_ArrayList implements CustomList {
+    private Object[] my_array;
+    private int real_size_array;
+
+    {
+        real_size_array = 0;
+        my_array = new Object[10];
+    }
+
+    @Override
+    public int size() {
+        return real_size_array;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return real_size_array != 0;
+    }
+
+    @Override
+    public boolean contains(Object element) {
+        for (int i = 0; i < real_size_array; i++) {
+            if (element == my_array[i]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean remove(Object element) {
+        for (int i = 0; i < real_size_array; i++) {
+            if (element == my_array[i]) {
+                for (int j = i; j < real_size_array - 1; j++) {
+                    my_array[j] = my_array[j + 1];
+                }
+                my_array[real_size_array] = null;
+                real_size_array--;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean add(Object element) {
+
+        if (element == null) {
+            return false;
+        }
+        if (real_size_array >= my_array.length) {
+            Object[] new_array = new Object[my_array.length * 2];
+            for (int i = 0; i < my_array.length; i++) {
+                new_array[i] = my_array;
+            }
+            my_array = new_array;
+        }
+        my_array[real_size_array] = element;
+        real_size_array++;
+        return true;
+    }
+
+    @Override
+    public Object get(int index) {
+        if (index < real_size_array) {
+            return my_array[index];
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean containsSublist(CustomList anotherCustomList) {
+        int k = 0; // счетчик, который будет считать, какой элемент в другом списке мы уже нашли
+        for (int i = 0; i < real_size_array; i++) {
+            if (this.get(i) == anotherCustomList.get(k)) {
+                k++;
+                if (k == anotherCustomList.size()) {  // если обошли весь второй список, то он является подсписком
+                    return true;
+                }
+            }
+        }
+        return false;  // не обошли второй список до конца, значит он не подсписок
+    }
+
+    @Override
+    public boolean containsAll(CustomList anotherCustomList) {
+        if (anotherCustomList.size() != real_size_array) {
+            return false;
+        }
+        for (int i = 0; i < real_size_array; i++) {
+            if (anotherCustomList.get(i) != my_array[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
