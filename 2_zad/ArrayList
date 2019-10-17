@@ -94,6 +94,8 @@ public class my_ArrayList implements CustomList {
     public boolean containsAll(CustomList anotherCustomList) {
         if (anotherCustomList.size() != real_size_array) {
             return false;
+        } else if (real_size_array == 0) {  // два нулевых листа - одинаковые
+            return true;
         }
         for (int i = 0; i < real_size_array; i++) {
             if (!anotherCustomList.get(i).equals(my_array[i])) {
