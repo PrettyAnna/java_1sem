@@ -93,7 +93,7 @@ public class my_ArrayList implements CustomList {
             return false;
         }
         for (int i = 0; i < real_size_array; i++) {
-            if (anotherCustomList.get(i) != my_array[i]) {
+            if (!anotherCustomList.get(i).equals(my_array[i])) {
                 return false;
             }
         }
