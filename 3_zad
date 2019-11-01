@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+
+class FileUtils {
+    /*читаем все строки из файла по пути path и возвращаем этот список*/
+    List<String> readAll(String path) {
+        List<String> result = new ArrayList<String>();
+        try {
+            File file = new File(path);
+            FileReader fr = new FileReader(file); // поток который подключается к текстовому файлу
+            BufferedReader br = new BufferedReader(fr); // соединяем FileReader с BufferedReader
+            String line;
+            while ((line = br.readLine()) != null) {
+                result.add(line);
+            }
+            br.close(); // закрываем поток
+            return result;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+//            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /*пишем все строки из lines в файла по пути path*/
+    void writeAll(String path, List<String> lines) {
+        try {
+            File file = new File(path);
+            FileWriter fr = new FileWriter(file, true); // поток который подключается к текстовому файлу
+            // true нужен для того, чтобы ДОписывать в конец файла
+            BufferedWriter bw = new BufferedWriter(fr); // соединяем FileWriter с BufferedWriter
+
+            for (String s : lines) {
+                bw.write(s + "\n");
+            }
+
+            bw.close(); // закрываем поток
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /*копируем файл по пути sourceFile в destinationFile*/
+    void copy(String sourceFile, String destinationFile) {
+        try {
+            List<String> list = readAll(sourceFile);
+            writeAll(destinationFile, list);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /*удаляем файл по пути path*/
+    void delete(String path) {
+        try {
+            File file = new File(path);
+            if (file.delete()) {
+                System.out.println("Файл удален");
+            } else  {
+                System.out.println("Файл не удален");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+}
