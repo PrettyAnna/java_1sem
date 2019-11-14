@@ -1,0 +1,52 @@
+package com.company;
+
+import java.util.ArrayList;
+
+public class Book {
+    private ArrayList<Contact> Book = new ArrayList();
+
+    // добавление контакта в список
+    void addContact(Contact a) {
+        Book.add(a);
+    }
+
+    // удаление контакта
+    public void deleteContact(Contact a) {
+        Book.remove(a);
+    }
+
+    // просмотр книги
+    void viewBook() {
+        System.out.println("------");
+        for(int i = 0; i < Book.size(); i++){
+            Contact r = new Contact();
+            r = Book.get(i);
+            r.viewContact(r);
+        }
+        System.out.println("------");
+    }
+
+    // поиск контакта по имени
+    void  searchContact(String name){
+        for(int i = 0; i < Book.size(); i++){
+            Contact r = new Contact();
+            r = Book.get(i);
+            if (r.getName().equals(name)) {
+                r.viewContact(r);
+            }
+        }
+    }
+
+    // поиск индекса по имени и номеру
+    Contact searchIndexContact(long number, String name){
+        for(int i = 0; i < Book.size(); i++){
+            Contact r = new Contact();
+            r = Book.get(i);
+            if ((r.getName().equals(name)) && (r.getNumber() == number)) {
+                //System.out.println(r);
+                return r;
+            }
+        }
+        return null;
+    }
+}
