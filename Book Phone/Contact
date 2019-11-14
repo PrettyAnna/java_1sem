@@ -1,0 +1,33 @@
+package com.company;
+
+class Contact {
+    private long number;
+    private String name;
+
+    public void setNumber(long number) {
+        this.number = number;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public long getNumber() {
+        return number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // просмотр контакта
+    public void viewContact(Contact a){
+        System.out.println(a.name + " " + a.number);
+    }
+
+    // изменение имени контакта
+    public void updateNameContact(Contact a, String newName){
+        a.name = newName;
+    }
+
+}
