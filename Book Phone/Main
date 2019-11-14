@@ -1,0 +1,32 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	    Book bookPhone = new Book();
+	    Contact Ann = new Contact();
+        Contact Sasha = new Contact();
+        Contact Ann2000 = new Contact();
+        Contact Maria1987 = new Contact();
+        Ann.setNumber(967008544);
+        Ann.setName("Anna");
+        Sasha.setNumber(968674079);
+        Sasha.setName("Sasha");
+        Ann2000.setNumber(867558544);
+        Ann2000.setName("Anna");
+        Maria1987.setNumber(976654344);
+        Maria1987.setName("Maria");
+        bookPhone.addContact(Ann);
+	      bookPhone.addContact(Sasha);
+        bookPhone.addContact(Maria1987);
+        bookPhone.addContact(Ann2000);
+	      bookPhone.viewBook();
+	      bookPhone.deleteContact(Sasha);
+        bookPhone.viewBook();
+        bookPhone.searchContact("Anna");
+        Ann.updateNameContact(Ann,"Nastya");
+        bookPhone.viewBook();
+        Ann.updateNameContact(bookPhone.searchIndexContact(967008544, "Nastya"), "Ivan");
+        bookPhone.viewBook();
+    }
+}
