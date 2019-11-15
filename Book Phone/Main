@@ -17,16 +17,16 @@ public class Main {
         Maria1987.setNumber(976654344);
         Maria1987.setName("Maria");
         bookPhone.addContact(Ann);
-	      bookPhone.addContact(Sasha);
+	    bookPhone.addContact(Sasha);
         bookPhone.addContact(Maria1987);
         bookPhone.addContact(Ann2000);
-	      bookPhone.viewBook();
-	      bookPhone.deleteContact(Sasha);
+	    bookPhone.viewBook();
+	    bookPhone.deleteContact(Sasha);
         bookPhone.viewBook();
         bookPhone.searchContact("Anna");
-        Ann.updateNameContact(Ann,"Nastya");
+        Ann.setName("Nastya");
         bookPhone.viewBook();
-        Ann.updateNameContact(bookPhone.searchIndexContact(967008544, "Nastya"), "Ivan");
+        bookPhone.searchIndexContact(967008544, "Nastya").setName("Ivan");
         bookPhone.viewBook();
     }
 }
