@@ -22,12 +22,6 @@ class Contact {
 
     // просмотр контакта
     public void viewContact(Contact a){
-        System.out.println(a.name + " " + a.number);
+        System.out.println(this.name + " " + this.number);
     }
-
-    // изменение имени контакта
-    public void updateNameContact(Contact a, String newName){
-        a.name = newName;
-    }
-
 }
