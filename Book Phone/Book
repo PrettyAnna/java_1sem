@@ -3,24 +3,24 @@ package com.company;
 import java.util.ArrayList;
 
 public class Book {
-    private ArrayList<Contact> Book = new ArrayList();
+    private ArrayList<Contact> book = new ArrayList();
 
     // добавление контакта в список
     void addContact(Contact a) {
-        Book.add(a);
+        book.add(a);
     }
 
     // удаление контакта
     public void deleteContact(Contact a) {
-        Book.remove(a);
+        book.remove(a);
     }
 
     // просмотр книги
     void viewBook() {
         System.out.println("------");
-        for(int i = 0; i < Book.size(); i++){
+        for(int i = 0; i < book.size(); i++){
             Contact r = new Contact();
-            r = Book.get(i);
+            r = book.get(i);
             r.viewContact(r);
         }
         System.out.println("------");
@@ -28,9 +28,9 @@ public class Book {
 
     // поиск контакта по имени
     void  searchContact(String name){
-        for(int i = 0; i < Book.size(); i++){
+        for(int i = 0; i < book.size(); i++){
             Contact r = new Contact();
-            r = Book.get(i);
+            r = book.get(i);
             if (r.getName().equals(name)) {
                 r.viewContact(r);
             }
@@ -39,14 +39,16 @@ public class Book {
 
     // поиск индекса по имени и номеру
     Contact searchIndexContact(long number, String name){
-        for(int i = 0; i < Book.size(); i++){
+        for(int i = 0; i < book.size(); i++){
             Contact r = new Contact();
-            r = Book.get(i);
+            r = book.get(i);
             if ((r.getName().equals(name)) && (r.getNumber() == number)) {
                 //System.out.println(r);
                 return r;
             }
         }
+        //System.out.println("Контакт не найден.");
         return null;
     }
 }
+
